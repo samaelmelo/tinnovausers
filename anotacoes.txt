@@ -1,0 +1,2 @@
+refatorar os caminhos relativos
+remover a pasta default do projeto

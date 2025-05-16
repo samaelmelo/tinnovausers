@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 300px;
+  border: 1px solid #ccc;
+
+  padding: 1.3rem;
+
+  background-color: #f6f6f6;
+
+  border-radius: 0.5rem;
+
+}
