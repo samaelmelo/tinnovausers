@@ -1,4 +1,4 @@
 refatorar os caminhos relativos
 remover a pasta default do projeto
 remover os comentarios
-remover lib de uuid
+globalizar as cores

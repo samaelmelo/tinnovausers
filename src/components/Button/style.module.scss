@@ -11,11 +11,11 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #b7b7b7;
+  margin-bottom: 0.5rem;
 }
 
-// Estado habilitado
 .enabled {
-  background-color: #00c8b3;
+  background-color: var(--color-blue);
   color: #ffffff;
 
   &:hover {
@@ -23,21 +23,18 @@
   }
 }
 
-// Estado desabilitado
 .disabled {
   background-color: #f6f6f6;
   color: #dddcdc;
   cursor: not-allowed;
 }
 
-// Estado loading (usa mesmo estilo do habilitado)
 .loading {
-  background-color: #00c8b3;
+  background-color: var(--color-blue);
   color: #ffffff;
   cursor: wait;
 }
 
-// Spinner
 .spinner {
   width: 20px;
   height: 20px;
@@ -51,4 +48,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-family: var(--font-logo);
+  font-weight: 400;
+
+  &.enabled {
+    color: var(--color-blue);
+  }
+
+  &.disabled {
+    color: var(--color-gray-disabled);
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    color: var(--color-blue);
+    border-color: var(--color-blue);
+    cursor: wait;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.defaultWidth {
+  width: auto;
+  margin: 0 auto;
+}
+
+
+.secondary {
+  background-color: var(--color-red);
 }

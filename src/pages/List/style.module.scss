@@ -1,0 +1,88 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+
+  @media (max-width: 800px) {
+    height: 100%;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+
+  @media (max-width: 800px) {
+    margin: 0;
+  }
+}
+
+.create {
+  margin-top: 2rem;
+  background-color: #00c8b3;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.questionDelete {
+  margin-block: 1rem;
+}
+
+.containerBtns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 530px;
+
+  padding: 1.3rem;
+
+  border-radius: 0.5rem;
+}
+
+.form .title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form .subtitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.btnClose {
+  background-color: transparent;
+  border: none;
+  align-self: flex-end;
+
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
