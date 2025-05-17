@@ -3,6 +3,18 @@
 Este projeto foi desenvolvido como parte do processo seletivo para vaga de Desenvolvedor Front-end na Tinnova.
 Consiste em uma aplicação React com duas telas principais: um **formulário de cadastro de usuários** e uma **listagem de usuários com funcionalidades de edição e exclusão**.
 
+
+## 🖼️ Projeto
+
+### Tela de Cadastro
+
+![Tela de Cadastro](./src/assets/Screenshot%202025-05-17%20at%2015.02.50.png)
+
+### Tela de Listagem
+
+![Tela de Listagem](./src/assets/Screenshot%202025-05-17%20at%2015.03.01.png)
+
+
 ---
 
 ## 📚 Tecnologias Utilizadas
@@ -27,7 +39,7 @@ Este projeto utiliza o **localStorage** como mecanismo principal de persistênci
 - 📃 Listagem de usuários com dados vindos da API e persistidos no **localStorage**
 - ✂️ Edição de dados do usuário
 - ❌ Exclusão de usuários com confirmação
-- ✨ Interface responsiva e estilizada conforme guia visual
+- ✨ Interface responsiva e estilizada 
 - ✅ Testes unitários para componentes-chave
 
 ---
@@ -42,9 +54,8 @@ Essa chamada só ocorre **uma única vez**, controlada por uma flag `users_loade
 - A flag impede chamadas subsequentes, mesmo com reloads
 - Toda leitura posterior considera apenas o `localStorage`
 
-Esse mecanismo garante que os dados da API sirvam apenas como **bootstrap inicial** e preserva o controle local do estado da aplicação.
+Esse mecanismo garante que os dados da API sirvam apenas como **dados iniciais** e preserva o controle local do estado da aplicação.
 
-⚠️ **Observação:** A chamada à API só será executada novamente se a flag `users_loaded` for removida manualmente do `localStorage` (por exemplo, limpando os dados do navegador).
 
 ---
 
@@ -105,13 +116,7 @@ src/
 ├── App.tsx             # Componente principal da aplicação
 ├── main.tsx            # Ponto de entrada da aplicação
 └── setupTests.ts       # Configuração dos testes
-```
-src/
-├── components/         # Componentes reutilizáveis (Input, Button, Modal, UserTable...)
-├── pages/              # Páginas principais: Register e List
-├── storage/            # Funções utilitárias de acesso ao localStorage
-├── service/            # Configuração da API
-└── dtos/               # Definição de tipos (UserDTO)
+
 ```
 
 ---
@@ -126,6 +131,13 @@ Testes foram escritos utilizando **Vitest** e **Testing Library** para garantir:
 
 ---
 
+## 🔗 Acesse o projeto online
+
+O projeto está disponível em produção na Vercel:
+👉 [https://tinnovausers.vercel.app/](https://tinnovausers.vercel.app/)
+
+---
+
 ## 🙌 Considerações finais
 
 Esse projeto reflete boas práticas de arquitetura de componentes, separação de responsabilidades, responsividade, acessibilidade básica e testes. 
@@ -133,4 +145,4 @@ Foi construído com foco na clareza de código, experiência do usuário e manut
 
 ---
 
-Feito com ❤️ por Samael Melo.
+Feito por Samael Melo.
