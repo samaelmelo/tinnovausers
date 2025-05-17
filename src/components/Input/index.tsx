@@ -11,12 +11,20 @@ export const Input: React.FC<InputProps> = ({
   label,
   error = false,
   errorMessage,
+  id,
   ...props
 }) => {
+  const inputId = id || `input-${Math.random().toString(36).substring(2, 9)}`;
+
   return (
     <div className={styles.wrapper}>
-      {label && <label className={styles.label}>{label}</label>}
+      {label && (
+        <label htmlFor={inputId} className={styles.label}>
+          {label}
+        </label>
+      )}
       <input
+        id={inputId}
         className={`${styles.input} ${error ? styles.invalid : ''}`}
         {...props}
       />
