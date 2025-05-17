@@ -10,7 +10,7 @@ import {
 import type { UserDTO } from '../../dtos/UserDTO';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 import { Modal } from '../../components/Modal';
 import { UserTable } from '../../components/UserTable';
 import { useForm } from 'react-hook-form';
@@ -54,6 +54,18 @@ export const List = () => {
 
     if (!hasInitialLoad()) {
       try {
+        const resolveAfter3Sec = new Promise((resolve) =>
+          setTimeout(resolve, 1000),
+        );
+        toast.promise(
+          resolveAfter3Sec,
+          {
+            pending: 'Carregando dados dA API.',
+            success: 'Carregamento pronto.',
+            error: 'Erro ao carregar usuários da API',
+          },
+          { toastId: 1 },
+        );
         const response = await fetch(`${api}/users`);
         const apiData = await response.json();
 
@@ -65,7 +77,6 @@ export const List = () => {
         storageUserSave(merged);
         markInitialLoad();
         setUsers(merged);
-        toast.success('Usuários carregados da API com sucesso!');
         return;
       } catch (err) {
         toast.error('Erro ao carregar usuários da API');

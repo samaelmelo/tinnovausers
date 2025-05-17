@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './style.module.scss';
+import { Loading } from '../Loading';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -8,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   text,
   isLoading = false,
   disabled = false,
@@ -17,7 +18,12 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const isButtonDisabled = disabled || isLoading;
-  const variantClass = variant === 'outline' ? styles.outline : variant === 'secondary' ? styles.secondary : '';
+  const variantClass =
+    variant === 'outline'
+      ? styles.outline
+      : variant === 'secondary'
+      ? styles.secondary
+      : '';
   const widthClass = fullWidth ? styles.fullWidth : styles.defaultWidth;
 
   return (
@@ -28,9 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={isButtonDisabled}
       {...props}
     >
-      {isLoading ? <span className={styles.spinner} /> : text}
+      {isLoading ? <Loading /> : text}
     </button>
   );
 };
-
-export default Button;

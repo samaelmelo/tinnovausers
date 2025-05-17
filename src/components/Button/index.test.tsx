@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import Button from './index';
+import {Button} from './index';
 import { vi } from 'vitest';
 
 describe('Button component', () => {
