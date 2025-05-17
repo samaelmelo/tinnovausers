@@ -7,22 +7,17 @@
 }
 
 :root {
-  --hue: 211;
-
-  --roxo: hsl(var(--hue), 50%, 40%, 0.774);
-
   --color-red: #eb4a46;
-  --color-blue: #00c8b3;
+  --color-green: #00c8b3;
   --color-white-1000: #fff;
   --color-white-900: #f6f6f6;
 
-
-  --color-gray-800: #dddcdc;
   --color-gray-900: #efeeed;
+  --color-gray-800: #dddcdc;
+  --color-gray-700: #f0f0f0;
   --color-gray-600: #ccc;
   --color-gray-400: #888;
   --color-gray-300: #333333;
-
 
   --font-primary: 'Inter', sans-serif;
   --font-logo: 'Montserrat', sans-serif;

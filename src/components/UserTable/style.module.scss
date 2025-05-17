@@ -1,7 +1,7 @@
 .tableWrapper {
   overflow-x: auto;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: var(--color-gray-700);
 }
 
 .table {
@@ -25,7 +25,7 @@
 
   th {
     font-weight: 600;
-    color: #333;
+    color: var(--color-gray-300);
     font-size: 0.9rem;
   }
 
@@ -37,7 +37,7 @@
     tr {
       display: block;
       margin-bottom: 1rem;
-      border: 1px solid #ddd;
+      border: 1px solid var(--color-gray-800);
       border-radius: 8px;
       padding: 0.5rem;
 

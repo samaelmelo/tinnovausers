@@ -7,7 +7,7 @@
 }
 
 .enabled {
-  background-color: var(--color-blue);
+  background-color: var(--color-green);
   color: var(--color-white-900);
 
   &:hover {
@@ -22,7 +22,7 @@
 }
 
 .loading {
-  background-color: var(--color-blue);
+  background-color: var(--color-green);
   color: var(--color-white-900);
   cursor: wait;
 }
@@ -46,9 +46,9 @@
   background-color: transparent;
   font-family: var(--font-logo);
   font-weight: 500;
-  
+
   &.enabled {
-    color: var(--color-blue);
+    color: var(--color-green);
   }
 
   &.disabled {
@@ -57,8 +57,8 @@
   }
 
   &.loading {
-    color: var(--color-blue);
-    border-color: var(--color-blue);
+    color: var(--color-green);
+    border-color: var(--color-green);
     cursor: wait;
   }
 }
