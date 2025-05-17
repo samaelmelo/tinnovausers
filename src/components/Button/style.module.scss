@@ -5,22 +5,50 @@
   border: none;
   border-radius: 4px;
   width: 100%;
-  cursor: pointer;
   transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b7b7b7;
 }
 
+// Estado habilitado
 .enabled {
   background-color: #00c8b3;
   color: #ffffff;
 
   &:hover {
-    opacity: 0.7;
+    filter: brightness(0.95);
   }
 }
 
+// Estado desabilitado
 .disabled {
   background-color: #f6f6f6;
   color: #dddcdc;
   cursor: not-allowed;
-  border: 1px solid #ccc;
+}
+
+// Estado loading (usa mesmo estilo do habilitado)
+.loading {
+  background-color: #00c8b3;
+  color: #ffffff;
+  cursor: wait;
+}
+
+// Spinner
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

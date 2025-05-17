@@ -1,20 +1,29 @@
-import React from "react";
-import styles from "./style.module.scss";
+import React from "react"
+import styles from "./style.module.scss"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text: string;
+  text: string
+  isLoading?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ text, disabled, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ text, isLoading = false, disabled = false, ...props }) => {
+  const isButtonDisabled = disabled || isLoading
+
   return (
     <button
-      className={`${styles.button} ${disabled ? styles.disabled : styles.enabled}`}
-      disabled={disabled}
+      className={`${styles.button} ${
+        isLoading
+          ? styles.loading
+          : disabled
+          ? styles.disabled
+          : styles.enabled
+      }`}
+      disabled={isButtonDisabled}
       {...props}
     >
-      {text}
+      {isLoading ? <span className={styles.spinner} /> : text}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
