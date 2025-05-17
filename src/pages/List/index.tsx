@@ -37,8 +37,6 @@ export const List = () => {
     if (userFiltered?.cpf) setSelectedCPF(userFiltered.cpf);
   };
 
-
-
   const handleDeleteConfirm = () => {
     storageDeleteUser(selectedCPF as string);
     setIsLoading(true);
