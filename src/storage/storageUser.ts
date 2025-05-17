@@ -21,3 +21,8 @@ export const storageDeleteUser = (cpf: string) => {
     storageUserSave(filteredUsers);
   }
 };
+
+export const markInitialLoad = () =>
+  localStorage.setItem('users_loaded', 'true');
+export const hasInitialLoad = () =>
+  localStorage.getItem('users_loaded') === 'true';

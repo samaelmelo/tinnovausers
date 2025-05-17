@@ -55,56 +55,58 @@ export const Register = () => {
 
   return (
     <main className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <h1 className={styles.title}>TINNOVA</h1>
-        <h2 className={styles.subtitle}>Cadastrar Usuário</h2>
-        <Input
-          label="Nome completo"
-          placeholder="John Doe"
-          {...register('name')}
-          error={!!errors.name}
-          errorMessage={errors.name?.message}
-        />
-        <Input
-          label="Email"
-          placeholder="email@email.com"
-          {...register('email')}
-          error={!!errors.email}
-          errorMessage={errors.email?.message}
-        />
-        <Input
-          label="CPF"
-          placeholder="000.000.000-00"
-          {...register('cpf')}
-          error={!!errors.cpf}
-          errorMessage={errors.cpf?.message}
-        />
-        <Input
-          label="Telefone"
-          placeholder="DDD 99999-9999"
-          {...register('phone')}
-          error={!!errors.phone}
-          errorMessage={errors.phone?.message}
-        />
+      <section>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <h1 className={styles.title}>TINNOVA</h1>
+          <h2 className={styles.subtitle}>Cadastrar Usuário</h2>
+          <Input
+            label="Nome completo"
+            placeholder="John Doe"
+            {...register('name')}
+            error={!!errors.name}
+            errorMessage={errors.name?.message}
+          />
+          <Input
+            label="Email"
+            placeholder="email@email.com"
+            {...register('email')}
+            error={!!errors.email}
+            errorMessage={errors.email?.message}
+          />
+          <Input
+            label="CPF"
+            placeholder="000.000.000-00"
+            {...register('cpf')}
+            error={!!errors.cpf}
+            errorMessage={errors.cpf?.message}
+          />
+          <Input
+            label="Telefone"
+            placeholder="DDD 99999-9999"
+            {...register('phone')}
+            error={!!errors.phone}
+            errorMessage={errors.phone?.message}
+          />
 
-        <Button
-          text="Cadastrar"
-          type="submit"
-          disabled={!isValid}
-          isLoading={loading}
-        />
+          <Button
+            text="Cadastrar"
+            type="submit"
+            disabled={!isValid}
+            isLoading={loading}
+          />
 
-        <Button
-          text="Ver usuários cadastrados"
-          type="button"
-          variant="outline"
-          disabled={!isUserInList}
-          fullWidth={false}
-          onClick={() => {
-            navigate('/list');
-          }}
-        />
-      </form>
+          <Button
+            text="Ver usuários cadastrados"
+            type="button"
+            variant="outline"
+            disabled={!isUserInList}
+            fullWidth={false}
+            onClick={() => {
+              navigate('/list');
+            }}
+          />
+        </form>
+      </section>
     </main>
   );
 };

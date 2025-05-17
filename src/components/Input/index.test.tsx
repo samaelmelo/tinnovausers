@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { Input } from '.';
 
-describe('Componente de Inpu', () => {
+describe('Input Component', () => {
   it('renderiza o label corretamente', () => {
     render(<Input label="Nome" />);
     expect(screen.getByLabelText('Nome')).toBeInTheDocument();

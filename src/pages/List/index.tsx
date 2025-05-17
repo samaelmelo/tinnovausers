@@ -4,6 +4,8 @@ import {
   storageGetUsers,
   storageDeleteUser,
   storageUserSave,
+  hasInitialLoad,
+  markInitialLoad,
 } from '../../storage/storageUser';
 import type { UserDTO } from '../../dtos/UserDTO';
 import { toast } from 'react-toastify';
@@ -35,8 +37,7 @@ export const List = () => {
     if (userFiltered?.cpf) setSelectedCPF(userFiltered.cpf);
   };
 
-  const markInitialLoad = () => localStorage.setItem('users_loaded', 'true');
-  const hasInitialLoad = () => localStorage.getItem('users_loaded') === 'true';
+
 
   const handleDeleteConfirm = () => {
     storageDeleteUser(selectedCPF as string);

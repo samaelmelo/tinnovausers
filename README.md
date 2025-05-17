@@ -1,54 +1,136 @@
-# React + TypeScript + Vite
+# Tinnova Users - Frontend Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte do processo seletivo para vaga de Desenvolvedor Front-end na Tinnova.
+Consiste em uma aplicação React com duas telas principais: um **formulário de cadastro de usuários** e uma **listagem de usuários com funcionalidades de edição e exclusão**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📚 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **React 19**
+- **TypeScript**
+- **Vite** (ambiente de build e desenvolvimento)
+- **SCSS Modules** (estilização por componente)
+- **React Router DOM v7** (roteamento entre as telas)
+- **React Hook Form + Yup** (formulários e validação)
+- **React Toastify** (notificações de sucesso/erro)
+- **Vitest + Testing Library** (testes unitários)
+- **uuid** (gerador de IDs para os usuários)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Funcionalidades
+
+Este projeto utiliza o **localStorage** como mecanismo principal de persistência de dados no navegador, garantindo que os usuários cadastrados permaneçam salvos mesmo após atualizações de página ou reinicialização do navegador.
+
+- ✏️ Cadastro de novos usuários com validações
+- 📃 Listagem de usuários com dados vindos da API e persistidos no **localStorage**
+- ✂️ Edição de dados do usuário
+- ❌ Exclusão de usuários com confirmação
+- ✨ Interface responsiva e estilizada conforme guia visual
+- ✅ Testes unitários para componentes-chave
+
+---
+
+## 📡 Chamada à API (apenas uma vez)
+
+Ao acessar a tela de listagem de usuários pela primeira vez, o sistema faz uma **requisição GET** à API `https://private-9d65b3-tinnova.apiary-mock.com/users` para obter uma lista inicial de usuários.
+
+Essa chamada só ocorre **uma única vez**, controlada por uma flag `users_loaded` armazenada no `localStorage`. Após o primeiro carregamento:
+
+- Os dados da API são mesclados com o que estiver salvo localmente
+- A flag impede chamadas subsequentes, mesmo com reloads
+- Toda leitura posterior considera apenas o `localStorage`
+
+Esse mecanismo garante que os dados da API sirvam apenas como **bootstrap inicial** e preserva o controle local do estado da aplicação.
+
+⚠️ **Observação:** A chamada à API só será executada novamente se a flag `users_loaded` for removida manualmente do `localStorage` (por exemplo, limpando os dados do navegador).
+
+---
+
+## 🚀 Como rodar o projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/samaelmelo/tinnovausers
+cd tinnova-users
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+yarn install
 ```
+
+### 3. Inicie o ambiente de desenvolvimento
+
+```bash
+yarn dev
+```
+
+A aplicação estará disponível em: [http://localhost:3000](http://localhost:3000)
+
+### 4. Execute os testes
+
+```bash
+yarn test
+```
+
+```bash
+
+# Rode o projeto em ambiente de desenvolvimento
+yarn dev
+
+# Execute os testes
+yarn test
+```
+
+---
+
+## 🌐 Estrutura de pastas
+
+A estrutura do projeto foi organizada para manter a separação de responsabilidades e facilitar a escalabilidade:
+
+```
+src/
+├── assets/             # Arquivos estáticos e imagens
+├── components/         # Componentes reutilizáveis (Input, Button, Modal, UserTable...)
+├── dtos/               # Definição de tipos como UserDTO
+├── pages/              # Páginas principais: Register e List
+├── routes/             # Arquivo de roteamento centralizado
+├── service/            # Configuração da API
+├── storage/            # Funções utilitárias para localStorage
+├── styles/             # Estilos globais e compartilhados
+├── App.tsx             # Componente principal da aplicação
+├── main.tsx            # Ponto de entrada da aplicação
+└── setupTests.ts       # Configuração dos testes
+```
+src/
+├── components/         # Componentes reutilizáveis (Input, Button, Modal, UserTable...)
+├── pages/              # Páginas principais: Register e List
+├── storage/            # Funções utilitárias de acesso ao localStorage
+├── service/            # Configuração da API
+└── dtos/               # Definição de tipos (UserDTO)
+```
+
+---
+
+## 📊 Testes
+
+Testes foram escritos utilizando **Vitest** e **Testing Library** para garantir:
+
+- Comportamento dos componentes visuais
+- Validações e interações do formulário
+- Renderização condicional de modais e mensagens
+
+---
+
+## 🙌 Considerações finais
+
+Esse projeto reflete boas práticas de arquitetura de componentes, separação de responsabilidades, responsividade, acessibilidade básica e testes. 
+Foi construído com foco na clareza de código, experiência do usuário e manutenção fácil.
+
+---
+
+Feito com ❤️ por Samael Melo.
