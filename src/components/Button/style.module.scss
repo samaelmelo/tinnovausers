@@ -1,22 +1,14 @@
 .button {
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  width: 100%;
-  transition: all 0.2s;
-  cursor: pointer;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #b7b7b7;
-  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .enabled {
   background-color: var(--color-blue);
-  color: #ffffff;
+  color: var(--color-white-900);
 
   &:hover {
     filter: brightness(0.95);
@@ -24,21 +16,21 @@
 }
 
 .disabled {
-  background-color: #f6f6f6;
-  color: #dddcdc;
+  background-color: var(--color-white-900);
+  color: var(--color-gray-800);
   cursor: not-allowed;
 }
 
 .loading {
   background-color: var(--color-blue);
-  color: #ffffff;
+  color: var(--color-white-900);
   cursor: wait;
 }
 
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-white-900);
   border-top: 2px solid transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -52,16 +44,15 @@
 
 .outline {
   background-color: transparent;
-  border: 1px solid transparent;
   font-family: var(--font-logo);
-  font-weight: 400;
-
+  font-weight: 500;
+  
   &.enabled {
     color: var(--color-blue);
   }
 
   &.disabled {
-    color: var(--color-gray-disabled);
+    color: var(--color-gray-600);
     cursor: not-allowed;
   }
 
@@ -80,7 +71,6 @@
   width: auto;
   margin: 0 auto;
 }
-
 
 .secondary {
   background-color: var(--color-red);

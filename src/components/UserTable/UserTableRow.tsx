@@ -4,8 +4,8 @@ import styles from './style.module.scss';
 
 interface Props {
   user: UserDTO;
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+  onEdit: (cpf: string) => void;
+  onDelete: (cpf: string) => void;
 }
 
 export const UserTableRow = ({ user, onEdit, onDelete }: Props) => {
@@ -19,14 +19,14 @@ export const UserTableRow = ({ user, onEdit, onDelete }: Props) => {
         <button
           className={styles.edit}
           aria-label="Editar usuário"
-          onClick={() => user.id && onEdit(user.id)}
+          onClick={() => user.cpf && onEdit(user.cpf)}
         >
           <FiEdit />
         </button>
         <button
           className={styles.delete}
           aria-label="Excluir usuário"
-          onClick={() => user.id && onDelete(user.id)}
+          onClick={() => user.cpf && onDelete(user.cpf)}
         >
           <FiTrash2 />
         </button>

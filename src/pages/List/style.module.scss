@@ -44,7 +44,7 @@
 }
 
 .questionDelete {
-  margin-block: 1rem;
+  margin-block: 2rem;
 }
 
 .containerBtns {
@@ -57,7 +57,7 @@
   flex-direction: column;
   width: 350px;
   height: 530px;
-
+  background-color: transparent;
   padding: 1.3rem;
 
   border-radius: 0.5rem;
@@ -78,8 +78,10 @@
 
 .btnClose {
   background-color: transparent;
-  border: none;
   align-self: flex-end;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
 
   svg {
     width: 1.3rem;

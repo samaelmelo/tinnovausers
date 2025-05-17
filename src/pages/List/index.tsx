@@ -16,26 +16,30 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../Register/schema';
 import { IoCloseOutline } from 'react-icons/io5';
 import { Input } from '../../components/Input';
+import { api } from '../../service/api';
 
 export const List = () => {
   const [users, setUsers] = useState<UserDTO[]>([]);
   const [user, setUser] = useState<UserDTO>({} as UserDTO);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedCPF, setSelectedCPF] = useState<string | null>(null);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleOpenModalDelete = (id: string) => {
+  const handleOpenModalDelete = (cpf: string) => {
     setIsDeleteOpen(true);
 
-    const userFiltered = users.find((user) => user.id === id);
-    if (userFiltered?.id) setSelectedId(userFiltered.id);
+    const userFiltered = users.find((user) => user.cpf === cpf);
+    if (userFiltered?.cpf) setSelectedCPF(userFiltered.cpf);
   };
 
+  const markInitialLoad = () => localStorage.setItem('users_loaded', 'true');
+  const hasInitialLoad = () => localStorage.getItem('users_loaded') === 'true';
+
   const handleDeleteConfirm = () => {
-    storageDeleteUser(selectedId as string);
+    storageDeleteUser(selectedCPF as string);
     setIsLoading(true);
 
     setTimeout(() => {
@@ -46,21 +50,36 @@ export const List = () => {
     }, 3000);
   };
 
-  const loadUsers = () => {
-    const data = storageGetUsers();
+  const loadUsers = async () => {
+    const localData = storageGetUsers() || [];
 
-    if (data === null) {
-      return navigate('/');
+    if (!hasInitialLoad()) {
+      try {
+        const response = await fetch(`${api}/users`);
+        const apiData = await response.json();
+
+        const apiUsers = Array.isArray(apiData) ? apiData : [];
+        const localUsers = Array.isArray(localData) ? localData : [];
+
+        const merged = [...apiUsers, ...localUsers];
+
+        storageUserSave(merged);
+        markInitialLoad();
+        setUsers(merged);
+        toast.success('Usuários carregados da API com sucesso!');
+        return;
+      } catch (err) {
+        toast.error('Erro ao carregar usuários da API');
+        console.error(err);
+      }
     }
 
-    if (Array.isArray(data)) {
-      setUsers(data);
+    if (Array.isArray(localData)) {
+      setUsers(localData);
+    } else {
+      setUsers([]);
     }
   };
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
 
   type FormData = UserDTO;
 
@@ -75,8 +94,8 @@ export const List = () => {
     mode: 'onChange',
   });
 
-  const handleEdit = (id: string) => {
-    const userFiltered = users.find((item) => item.id === id);
+  const handleEdit = (cpf: string) => {
+    const userFiltered = users.find((item) => item.cpf === cpf);
     if (!userFiltered) return;
 
     setUser(userFiltered);
@@ -90,13 +109,13 @@ export const List = () => {
   const onEdit = (data: FormData) => {
     const updateUser = {
       ...data,
-      id: user.id,
+      cpf: user.cpf,
     };
 
     setIsLoading(true);
 
     const updatedUsers = users.map((item) =>
-      item.id === updateUser.id ? updateUser : item,
+      item.cpf === updateUser.cpf ? updateUser : item,
     );
     storageUserSave(updatedUsers);
 
@@ -113,6 +132,10 @@ export const List = () => {
     reset();
     setIsEditOpen(false);
   };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <main className={styles.wrapper}>
@@ -171,6 +194,13 @@ export const List = () => {
             errorMessage={errors.name?.message}
           />
           <Input
+            label="Email"
+            placeholder="email@email.com"
+            {...register('email')}
+            error={!!errors.email}
+            errorMessage={errors.email?.message}
+          />
+          <Input
             label="CPF"
             placeholder="000.000.000-00"
             {...register('cpf')}
@@ -183,13 +213,6 @@ export const List = () => {
             {...register('phone')}
             error={!!errors.phone}
             errorMessage={errors.phone?.message}
-          />
-          <Input
-            label="Email"
-            placeholder="email@email.com"
-            {...register('email')}
-            error={!!errors.email}
-            errorMessage={errors.email?.message}
           />
 
           <Button

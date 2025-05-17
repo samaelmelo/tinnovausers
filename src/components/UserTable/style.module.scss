@@ -17,6 +17,12 @@
     font-size: 0.85rem;
   }
 
+  tr {
+    :last-child {
+      display: flex;
+    }
+  }
+
   th {
     font-weight: 600;
     color: #333;
@@ -55,16 +61,12 @@
   cursor: pointer;
 
   svg {
-    font-size: 16px;
+    width: 1rem;
+    height: 1rem;
   }
 }
 
-.edit {
-  margin-right: 8px;
-}
-
 .noData {
+  color: var(--color-gray-400);
   text-align: center;
-  padding: 1rem;
-  color: #888;
 }

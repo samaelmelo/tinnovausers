@@ -13,8 +13,16 @@
 
   --color-red: #eb4a46;
   --color-blue: #00c8b3;
-  --color-white: #fff;
-  --color-gray-disabled: #dddcdc;
+  --color-white-1000: #fff;
+  --color-white-900: #f6f6f6;
+
+
+  --color-gray-800: #dddcdc;
+  --color-gray-900: #efeeed;
+  --color-gray-600: #ccc;
+  --color-gray-400: #888;
+  --color-gray-300: #333333;
+
 
   --font-primary: 'Inter', sans-serif;
   --font-logo: 'Montserrat', sans-serif;
@@ -26,9 +34,8 @@ li {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: hsl(0, 4%, 90%);
-  // background: #333377 url('../assets/background.svg') no-repeat center top;
-  color: #333;
+  background: linear-gradient(280deg, #4b1744, #27285b);
+  color: var(--color-gray-300);
   padding: 1rem;
 }
 
@@ -39,5 +46,13 @@ a {
 }
 
 button {
-  font-family: monospace, sans-serif;
+  font-family: var(--font-logo);
+  border: none;
+  border-radius: 1.2rem;
+  padding: 10px 16px;
+  font-size: 14px;
+
+  font-weight: bold;
+  transition: all 0.2s;
+  cursor: pointer;
 }

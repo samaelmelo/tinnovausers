@@ -66,6 +66,13 @@ export const Register = () => {
           errorMessage={errors.name?.message}
         />
         <Input
+          label="Email"
+          placeholder="email@email.com"
+          {...register('email')}
+          error={!!errors.email}
+          errorMessage={errors.email?.message}
+        />
+        <Input
           label="CPF"
           placeholder="000.000.000-00"
           {...register('cpf')}
@@ -78,13 +85,6 @@ export const Register = () => {
           {...register('phone')}
           error={!!errors.phone}
           errorMessage={errors.phone?.message}
-        />
-        <Input
-          label="Email"
-          placeholder="email@email.com"
-          {...register('email')}
-          error={!!errors.email}
-          errorMessage={errors.email?.message}
         />
 
         <Button

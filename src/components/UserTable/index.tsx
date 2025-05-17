@@ -4,8 +4,8 @@ import { UserTableRow } from './UserTableRow';
 
 interface UserTableProps {
   users: UserDTO[];
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+  onEdit: (cpf: string) => void;
+  onDelete: (cpf: string) => void;
 }
 
 export const UserTable = ({ users, onEdit, onDelete }: UserTableProps) => {
@@ -21,25 +21,22 @@ export const UserTable = ({ users, onEdit, onDelete }: UserTableProps) => {
             <th>Ações</th>
           </tr>
         </thead>
-        <tbody>
-          {users.length === 0 ? (
-            <tr>
-              <td colSpan={5} className={styles.noData}>
-                Nenhum usuário cadastrado.
-              </td>
-            </tr>
-          ) : (
-            users.map((user) => (
+        {users.length !== 0 && (
+          <tbody>
+            {users.map((user) => (
               <UserTableRow
                 key={user.id}
                 user={user}
                 onEdit={onEdit}
                 onDelete={onDelete}
               />
-            ))
-          )}
-        </tbody>
+            ))}
+          </tbody>
+        )}
       </table>
+      {users.length === 0 && (
+        <p className={styles.noData}>Nenhum usuário cadastrado.</p>
+      )}
     </div>
   );
 };
